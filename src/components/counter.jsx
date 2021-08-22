@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   render() {
+    
     return (
       <React.Fragment><br />
         <span className={this.getBadgeClasses()}> {this.formatCount()} </span>
