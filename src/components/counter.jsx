@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-
+<script
+  src="https://kit.fontawesome.com/a076d05399.js"
+  crossorigin="anonymous"
+></script>;
 class Counter extends Component {
   componentDidUpdate(prevProps, prevState) {
     console.log('previous props',prevProps);
@@ -15,26 +18,53 @@ class Counter extends Component {
   render() {
     console.log('counter - rendered')
     return (
-      <React.Fragment><br />
-        <span className={this.getBadgeClasses()}> {this.formatCount()} </span>
-        <button
-          onClick={() => this.props.onIncrement(this.props.counter)}
-          className="btn btn-secondary btn-sm"
-        >
-          Increment
-        </button>
-        <button
-          onClick={() => this.props.onDelete(this.props.counter.id)}
-          className="btn btn-danger btn-sm m-2"
-        >
-          Delete
-        </button>
+      <React.Fragment>
+        <br />
+        <div className="row">
+          <div className="col-sm">
+            <span className={this.getBadgeClasses()}>
+              {" "}
+              {this.formatCount()}{" "}
+            </span>
+          </div>
+          <div className="col-sm">
+            <button
+              onClick={() => this.props.onIncrement(this.props.counter)}
+              className="btn btn-secondary btn-sm"
+            >
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+          <div className="col-sm">
+            <button
+              onClick={() => this.props.onDecrement(this.props.counter)}
+              {...this.getDisabledState()}
+              className="btn btn-secondary btn-sm"
+            >
+              <i class="fa fa-minus"></i>
+            </button>
+          </div>
+          <div className="col-sm">
+            <button
+              onClick={() => this.props.onDelete(this.props.counter.id)}
+              className="btn btn-danger btn-sm m-2"
+            >
+              <i className="fa fa-close"></i>
+            </button>
+          </div>
+        </div>
       </React.Fragment>
     );
   }
+  
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
     classes += this.props.counter.value === 0 ? "warning" : "primary";
+    return classes;
+  }
+  getDisabledState() {
+    let classes = "";
+    classes += this.props.counter.value === 0 ? "disabled" : " ";
     return classes;
   }
 
