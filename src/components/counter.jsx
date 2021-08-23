@@ -5,9 +5,12 @@ class Counter extends Component {
     console.log('previous props',prevProps);
     console.log("previous state", prevState);
 
-    if(prevProps.counter.value != this.props.counter.value){
+    if(prevProps.counter.value !== this.props.counter.value){
       //Ajax call and get new data from the server
     }
+  }
+  componentWillUnmount(){
+    console.log('counter - unmount')
   }
   render() {
     console.log('counter - rendered')
